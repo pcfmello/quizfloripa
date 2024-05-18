@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import db from "../../../db.json";
 
-const QuizBackground = styled.div`
+interface QuizBackgroundProps {
+  backgroundImage: string;
+}
+
+const QuizBackground = styled.div<QuizBackgroundProps>`
   width: 100%;
   background-size: cover;
   background-position: center;
   background-image: url(${({ backgroundImage }) => backgroundImage});
-  background-color: ${({ theme }) => theme.colors.mainBg};
+  background-color: ${db.theme.colors.mainBg};
   flex: 1;
   transition: background 0.5s ease;
   @media screen and (max-width: 500px) {
@@ -15,10 +20,7 @@ const QuizBackground = styled.div`
       content: "";
       background-size: cover;
       background-position: center;
-      background-image: linear-gradient(
-          transparent,
-          ${({ theme }) => theme.colors.mainBg}
-        ),
+      background-image: linear-gradient(transparent, ${db.theme.colors.mainBg}),
         url(${({ backgroundImage }) => backgroundImage});
       display: block;
       width: 100%;

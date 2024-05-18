@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
-import { ThemeProvider, type DefaultTheme } from "styled-components";
-import GlobalStyle from "@/components/globalstyles";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../components/globalstyles";
 import db from "../db.json";
 
 const theme = db.theme;

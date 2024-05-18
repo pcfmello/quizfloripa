@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import db from "../../../db.json";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
 
 const SVGWrapper = styled.svg`
   fill: ${({ theme }) => theme.colors.secondary};
-  color: ${({ theme }) => theme.colors.contrastText};
+  color: ${db.theme.colors.contrastText};
   cursor: pointer;
   &:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;

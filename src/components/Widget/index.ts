@@ -5,7 +5,7 @@ const Widget = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.mainBg};
+  background-color: ${db.theme.colors.mainBg};
   border-radius: ${db.theme.borderRadius};
   overflow: hidden;
 
@@ -25,7 +25,8 @@ const Widget = styled.div`
   }
 `;
 
-Widget.Header = styled.header`
+// eslint-disable-next-line
+const WidgetHeader = styled.header`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -37,7 +38,8 @@ Widget.Header = styled.header`
   }
 `;
 
-Widget.Content = styled.div`
+// eslint-disable-next-line
+const WidgetContent = styled.div`
   padding: 1.5rem 2rem 2rem;
 
   & > *:first-child {
@@ -54,4 +56,4 @@ Widget.Content = styled.div`
   }
 `;
 
-export default Widget;
+export { Widget, WidgetHeader, WidgetContent };
