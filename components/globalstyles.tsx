@@ -1,22 +1,29 @@
 import { createGlobalStyle } from "styled-components";
+import db from "../db.json";
+
+const { theme } = db;
 
 const GlobalStyle = createGlobalStyle`
-  html,
-  body {
-    color: ${({ theme }) => theme.colors.primary};
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
   * {
     box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    /* New styles */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    // Deixa branco no começo
+    color: ${() => theme.colors.contrastText};
+  }
+  html, body {
+    min-height: 100vh;
+  }
+  #__next {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
