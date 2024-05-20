@@ -1,9 +1,12 @@
+import Head from "next/head";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 import db from "../db.json";
-import { Widget, WidgetHeader, WidgetContent } from "../src/components/Widget";
 import Footer from "../src/components/Footer";
 import GithubCorner from "../src/components/GithubCorner";
 import QuizBackground from "../src/components/QuizBackground";
+import { Widget, WidgetContent, WidgetHeader } from "../src/components/Widget";
+import { useState } from "react";
 
 const Title = styled.h1`
   font-size: 50px;
@@ -22,15 +25,36 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+
+  const [name, setname] = useState("");
+
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head>
+        <title>FloripaQuiz - Home</title>
+      </Head>
       <QuizContainer>
         <Widget>
           <WidgetHeader>
-            <h1>Florianópolis</h1>
+            <h1>Florianópolis - Ilha da Magia (Ilha de SC)</h1>
           </WidgetHeader>
           <WidgetContent>
-            <p>Ilha da Magia (Ilha de SC)</p>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                router.push(`/quiz?name=${name}`);
+              }}
+            >
+              <input
+                value={name}
+                onChange={(e) => setname(e.target.value)}
+                placeholder="Diga teu nome aí moquiridu"
+              />
+              <button type="submit" disabled={!name}>
+                Jogar{name.length > 0 ? `, ${name}` : ""}
+              </button>
+            </form>
           </WidgetContent>
         </Widget>
         <Widget>
